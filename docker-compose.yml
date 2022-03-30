@@ -1,0 +1,39 @@
+version: '2'
+services:
+  bifana:
+    image: "cpollet/bifana-web:latest"
+    ports:
+      - 8080:8080
+    environment:
+      - JWT_SECRET=my-secret-key
+      - TZ=Europe/Zurich
+    networks:
+      - default
+
+  grafana:
+    image: "grafana/grafana:latest"
+    ports:
+      - 3000:3000
+    environment:
+      - GF_DATE_FORMATS_DEFAULT_TIMEZONE=Europe/Zurich
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_SERVER_DOMAIN=stats.bifana.info
+      - GF_SERVER_ROOT_URL=http://stats.bifana.info
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - default
+
+  influxdb:
+    image: "library/influxdb:latest"
+    ports:
+      - 8086:8086
+    volumes:
+      - influxdb-data:/var/lib/influxdb
+    networks:
+      - default
+
+volumes:
+  grafana-data:
+  influxdb-data:
