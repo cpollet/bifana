@@ -10,6 +10,14 @@
 		a, a:visited {
 			color: white;
 		}
+		img {
+			border: 5px solid red;
+		}
+		.awesome {
+			color: black;
+			background-color: yellow;
+			padding: 0 1px
+		}
 		.blink_me {
 			color: cyan;
 			animation: blinker 1s step-start infinite;
@@ -20,23 +28,27 @@
 			}
 		}
 	</style>
+	<script>
+		function message(e) {
+			alert("Haha.");
+			return false;
+		}
+	</script>
 </head>
 <body>
 	<center>
 		<h1>-= Welcome to bifana world =-</h1>
 		<p>
-			<a href="https://docs.google.com/spreadsheets/d/1MI-PZAg4YPkuwh_PAZlIIQw15jc5aIU0GXf5-BEAqwM/edit?usp=sharing">Survey result</a>, or
-			<span class="blink_me">click on the bifana to access the awesome :)</span>
+			Study the <a href="https://docs.google.com/spreadsheets/d/1MI-PZAg4YPkuwh_PAZlIIQw15jc5aIU0GXf5-BEAqwM/edit?usp=sharing">survey result</a>, or
+			<span class="blink_me">click on the bifana</span> to access the <span class="awesome">awesome</span>!
 		</p>
-		<a href="http://stats.bifana.info/d/bifana/bifana?orgId=1"><img src="bifana.gif"></a>
-
-	
+		<a href="http://stats.bifana.info/d/bifana/bifana?orgId=1" title="yummy"><img src="bifana.gif" alt="THE bifana"></a>
 		<p>
 			This website has been optimised for 800x600 viewing.
 			<br>
 			&copy; 1996 <a href="https://github.com/cpollet/bifana">Bifana World</a>&trade;
 			<br>
-			contact: <a href="#">webmaster@bifana.info</a>
+			contact: <a href="#" onclick="return message()">webmaster@bifana.info</a>
 		</p>
 	</center>
 </body>
