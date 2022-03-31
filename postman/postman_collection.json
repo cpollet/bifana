@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "10295dd0-527a-4ece-a940-1be4d913b206",
+		"name": "bifana.info",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"your-username\",\n\t\"secret\": \"{{JWT_SECRET}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://bifana.info/api/token",
+					"protocol": "http",
+					"host": [
+						"bifana",
+						"info"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "init",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://bifana.info/api/init",
+					"protocol": "http",
+					"host": [
+						"bifana",
+						"info"
+					],
+					"path": [
+						"api",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add measure",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"time\": \"2022-03-31T12:15:00\",\n    \"weight\": {\n        \"total\": 250,\n        \"meat\": 120\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://bifana.info/api/measure",
+					"protocol": "http",
+					"host": [
+						"bifana",
+						"info"
+					],
+					"path": [
+						"api",
+						"measure"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
