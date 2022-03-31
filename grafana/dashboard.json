@@ -44,7 +44,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 12,
+        "w": 9,
         "x": 0,
         "y": 0
       },
@@ -130,6 +130,109 @@
       "type": "stat"
     },
     {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "decimals": 1,
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "",
+              "to": "",
+              "type": 1
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 9,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "/^weight\\.sum / 1000$/",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "7.3.1",
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "weight",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "total"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total mass of bifana eaten [kg]",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "",
+            "binary": {
+              "left": "weight.sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "1000"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
       "aliasColors": {},
       "breakPoint": "50%",
       "cacheTimeout": null,
@@ -148,8 +251,8 @@
       "format": "none",
       "gridPos": {
         "h": 5,
-        "w": 12,
-        "x": 12,
+        "w": 9,
+        "x": 15,
         "y": 0
       },
       "id": 8,
@@ -219,7 +322,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 7,
         "w": 12,
         "x": 0,
         "y": 5
@@ -380,7 +483,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 7,
         "w": 12,
         "x": 12,
         "y": 5
@@ -528,11 +631,11 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 12
       },
       "id": 10,
       "options": {
-        "content": "# Want to contribute?\n\nAsk a token and then execute the following:\n\n```\ncurl --location --request POST 'http://bifana.info/api/measure' \\\n     --header \"Authorization: Bearer $TOKEN\" \\\n     --header 'Content-Type: application/json' \\\n     --data-raw '{\n         \"time\": \"2022-04-01T12:00:00\",\n         \"weight\": {\n             \"total\": 250,\n             \"meat\": 120\n         }\n     }'\n```\nNote that the `time` field is optional and the default value is the current date/time.\n\n\nMore information on https://github.com/cpollet/bifana.\n         ",
+        "content": "# Want to contribute?\n\nAsk a token and then execute the following:\n\n```\ncurl --location --request POST 'http://bifana.info/api/measure' \\\n     --header \"Authorization: Bearer $TOKEN\" \\\n     --header 'Content-Type: application/json' \\\n     --data-raw '{\n         \"time\": \"2022-04-01T12:00:00\",\n         \"weight\": {\n             \"total\": 250,\n             \"meat\": 120\n         }\n     }'\n```\nNote that the `time` field is optional and the default value is the current date/time.\n\n\nMore information (there also is a postman collection) on https://github.com/cpollet/bifana.\n         ",
         "mode": "markdown"
       },
       "pluginVersion": "7.3.1",
@@ -575,7 +678,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Welcome",
+      "title": "Contribution",
       "type": "text"
     }
   ],
@@ -586,12 +689,12 @@
     "list": []
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Bifana",
   "uid": "bifana",
-  "version": 3
+  "version": 9
 }
